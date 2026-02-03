@@ -8,7 +8,7 @@ import { useTastyPicks } from "../../providers/TastyPicksProvider";
 
 const MenuItem = ({ dish }) => {
   const { strMeal: name, strMealThumb: image } = dish  ?? {};
-  const { tastyPicks, setTastyPicks } = useTastyPicks() ?? {};
+  const { tastyPicks = [], setTastyPicks } = useTastyPicks() ?? {};
   const navigate = useNavigate();
 
   const addToTastyPicks = () => {
