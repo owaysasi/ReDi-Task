@@ -1,8 +1,8 @@
 import styles from "./NavBar.module.css";
 
-const NavBar = ({ children }) => {
+const NavBar = ({ className, children }) => {
   return (
-    <div className={styles.navBar}>
+    <div className={`${styles.navBar} ${className}`}>
       <div className={styles.navBarContentWrapper}>{children}</div>
     </div>
   );
