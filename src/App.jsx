@@ -24,13 +24,15 @@ function App() {
 // Wrap App in an ErrorBoundary to help us with development bugs
 
 export default function WrappedApp() {
-  return import.meta.env.MODE === "development" ? (
-    <ErrorBoundary>
-      <TastyPicksProvider>
+  return (
+    <TastyPicksProvider>
+      {import.meta.env.MODE === "development" ? (
+        <ErrorBoundary>
+          <App />
+        </ErrorBoundary>
+      ) : (
         <App />
-      </TastyPicksProvider>
-    </ErrorBoundary>
-  ) : (
-    <App />
+      )}
+    </TastyPicksProvider>
   );
 }
