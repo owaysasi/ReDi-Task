@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useTastyPicks } from "../providers/TastyPicksProvider.jsx";
 
 const TastyPicksView = () => {
-  const { tastyPicks, setTastyPicks } = useTastyPicks() ?? {};
+  const { tastyPicks = [], setTastyPicks = () => {} } = useTastyPicks() ?? {};
   
   const navigate = useNavigate();
   
