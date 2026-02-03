@@ -5,9 +5,16 @@ import MenuItem from "../components/MenuItem/MenuItem.jsx";
 import styles from "./RestaurantView.module.css";
 import NavBar from "../components/NavBar/NavBar.jsx";
 import SearchField from "../components/SearchField/SearchField.jsx";
+import Button from "../components/Button/Button.jsx";
+import { useNavigate } from "react-router-dom";
+import { useTastyPicks } from "../providers/TastyPicksProvider.jsx";
+
 
 const RestaurantView = () => {
   const [dishes, setDishes] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
+  const { tastyPicks } = useTastyPicks();
 
   // useDebouncedCallback takes a function as a parameter and as the second parameter
   // the number of milliseconds it should wait until it is actually called so a user
@@ -16,7 +23,7 @@ const RestaurantView = () => {
   const debouncedEffectHook = useDebouncedCallback(() => {
     let currentEffect = true;
     fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=`
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText.trim()}`
     ).then(res => {
       if (!res.ok) {
         return { meals: null };
@@ -49,16 +56,16 @@ const RestaurantView = () => {
 
   // useEffect can take a variable that is a function and does not need to be defined as an anonymous () => {} arrow function
   // This is especially important when using more controlled techniques like debouncing
-  useEffect(debouncedEffectHook, [debouncedEffectHook]);
+  useEffect(debouncedEffectHook, [debouncedEffectHook, searchText]);
 
   return (
     <>
       <NavBar>
         <h1>ReDI React Restaurant</h1>
 
-        <SearchField />
+        <SearchField searchText={searchText} setSearchText={setSearchText} />
+        <Button className={styles.tastyPicks} onClick={() => navigate("/tasty-picks")}>{(tastyPicks || []).length > 0 ? <span className={styles.tastyPicksCounter}>{tastyPicks.length}</span> : null}Tasty Picks</Button>
       </NavBar>
-
       <div className={styles.restaurantWrapper}>
         <div className={styles.menu}>
           {dishes.length > 0 ? (
