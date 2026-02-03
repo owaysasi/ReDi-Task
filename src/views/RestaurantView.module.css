@@ -13,3 +13,19 @@
   gap: 20px; /* Space between each menu item/card */
   justify-content: center; /* Center the cards in the menu container */
 }
+
+.tastyPicks{
+  border-radius: 10px;
+}
+
+.tastyPicksCounter {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  height: 20px;
+  width: 20px;
+  color: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
