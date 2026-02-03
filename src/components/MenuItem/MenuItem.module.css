@@ -86,3 +86,22 @@
 .menuItemDetail a:hover {
   text-decoration: underline;
 }
+
+.addToTastyPicksButton {
+  background-color: transparent;
+  color: #007bff;
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border: none;
+  border-radius: 50%;
+  margin: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addToTastyPicksButton:hover {
+  border: 2px #007bff solid;
+  color: #007bff;
+}

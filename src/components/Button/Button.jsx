@@ -1,6 +1,6 @@
 import styles from "./Button.module.css";
 
-const Button = ({ isSelected, name, onClick, children }) => {
+const Button = ({ isSelected, name, onClick, className, children }) => {
   const buttonStyles = [styles.button];
 
   if (isSelected) {
@@ -8,7 +8,7 @@ const Button = ({ isSelected, name, onClick, children }) => {
   }
 
   return (
-    <button className={buttonStyles.join(" ")} onClick={() => onClick(name)}>
+    <button className={[...buttonStyles, className].join(" ")} onClick={() => onClick(name)}>
       {children}
     </button>
   );
