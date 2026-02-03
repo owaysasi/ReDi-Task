@@ -4,7 +4,7 @@ const TastyPicksContext = createContext();
 
 export function TastyPicksProvider({ children }) {
   const [tastyPicks, setTastyPicks] = useState(() => {
-    const stored = localStorage.getItem("TastyPicks");
+    const stored = localStorage.getItem("tastyPicks");
     return stored ? JSON.parse(stored) : [];
   });
 
