@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, HashRouter, Routes } from "react-router-dom";
 
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.jsx";
 import MenuItemDetails from "./components/MenuItem/MenuItemDetails.jsx";
@@ -10,14 +10,14 @@ import { TastyPicksProvider } from "./providers/TastyPicksProvider.jsx";
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <Routes>
         <Route index element={<RestaurantView />} />
         <Route path="/tasty-picks" element={<TastyPicksView />} />
         <Route path="/meals/:id" element={<MenuItemDetails />} />
         <Route path="/*" element={<p>404 Page not found</p>} />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 
